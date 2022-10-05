@@ -25,7 +25,6 @@ Tweede test case
 
 
 Derde test case
-
     Wait Until Element Is Visible    css:#username
     Input Text    css:#username     tomsmith
     Input Text    css:#password     SuperSecretPassword!
