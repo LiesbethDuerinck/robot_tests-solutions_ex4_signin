@@ -9,38 +9,41 @@ Test Setup  Go To Signin Page
 *** Test Cases ***
 
 Eerste test case
+    Open My Website
     Wait Until Element Is Visible    css:#username
     Input Text    css:#username     tomsmith
     Input Text    css:#password     incorrectPassword
-    Click Element    css:.fa.fa-2x.fa-sign-in
+    Click Element    //i[@class='fa fa-2x fa-sign-in']
     Element Should Contain    css:#flash    Your password is invalid!
-    Sleep  1s
+    Close Browser
 
 Tweede test case
+    Open My Website
     Wait Until Element Is Visible    css:#username
     Input Text    css:#username     tom
     Input Text    css:#password     incorrectPassword
-    Click Element    css:.fa.fa-2x.fa-sign-in
+    Click Element    //i[@class='fa fa-2x fa-sign-in']
     Element Should Contain    css:#flash    Your username is invalid!
-    Sleep  1s
+    Close Browser
 
 Derde test case
+    Open My Website
     Wait Until Element Is Visible    css:#username
     Input Text    css:#username     tomsmith
     Input Text    css:#password     SuperSecretPassword!
-    Click Element    css:.fa.fa-2x.fa-sign-in
+    Click Element    //i[@class='fa fa-2x fa-sign-in']
     Element Should Contain    css:#flash    You logged into a secure area!
-    Sleep  1s
-    Go To    http://the-internet.herokuapp.com/login
+    Close Browser
 
 Vierde test case
+    Open My Website
     Wait Until Element Is Visible    css:#username
     Input Text    css:#username     tomsmith
     Input Text    css:#password     SuperSecretPassword!
-    Click Element    css:.fa.fa-2x.fa-sign-in
-    Click Element    css:.icon-2x.icon-signout
+    Click Element    //i[@class='fa fa-2x fa-sign-in']
+    Click Element    //i[@class='icon-2x icon-signout']
     Element Should Contain    css:div[class='example']    Login Page
-    Sleep  1s
+    Close Browser
 
 
 
