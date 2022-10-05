@@ -2,8 +2,8 @@
 Resource  basePage.robot
 
 *** Variables ***
-${EMAIL_LOGIN_TXT}=       id:username
-${PASSWORD_LOGIN_TXT}=    id:password
+${EMAIL_LOGIN_TXT}=       css:#username
+${PASSWORD_LOGIN_TXT}=    css:#password
 ${LOGIN_BTN}=             xpath://input[@name='login']
 ${LOGIN_ERROR}=           class:woocommerce-error
 

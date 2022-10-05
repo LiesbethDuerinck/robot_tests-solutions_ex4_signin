@@ -1,3 +1,3 @@
 *** Variables ***
 ${BROWSER}=     Google Chrome   
-${BASE_URL}=    http://practice.automationtesting.in
+${BASE_URL}=    https://the-internet.herokuapp.com/login

@@ -3,30 +3,17 @@ Resource  ../pageObjects/homePage.robot
 Resource  ../pageObjects/signInPage.robot
 
 Suite Setup  Open My Website
-Suite Teardown  Close browser
-Test Setup  Go To Signin Page
 
 *** Test Cases ***
 Login Without Email Address
-    Log In With Account
-    ${errorMessage}=  Get Login Error Message
-    Should Contain  ${errorMessage}  Username is required
-
-Login With Unexisting Account
-    Log In With Account  notanaccount@gmail.com  password
-    ${errorMessage}=  Get Login Error Message
-    Should Contain  ${errorMessage}  A user could not be found with this email address
-
-Login Without Password
-    Log In With Account  notanaccount@gmail.com
-    ${errorMessage}=  Get Login Error Message
-    Should Contain  ${errorMessage}  Password is required.
-
-
-
-
-
-
-
-
+    Sleep  2s
+    Click Element  css:#menu-icon
+    Sleep  2s
+    Click Element  css:a[href='https://practice.automationtesting.in/my-account/']
+    Sleep  10s
+    Input Text  css:#password  dlsl
+    Sleep  1s
+    Click Button  css:input[value='Login']
+    Sleep  1s
+    Element Text Should Be  ul[class='woocommerce-error'] li  Error: Username is required
 
