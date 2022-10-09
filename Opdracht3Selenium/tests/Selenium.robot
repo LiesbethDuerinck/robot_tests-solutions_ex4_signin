@@ -94,7 +94,15 @@ Een profiel heeft een avatar
 
 De zoekbalk helpt op een film te zoeken
 
+    Click Element  css: #mui-42791
+    Input Text  css:#mui-42791  Clouds
+
+
 Je kan horizontaal door genres scrollen
 
 De zoekbalk vult resultaten aan
 
+    Click Element  css: #mui-42791
+    Input Text  css:#mui-42791  Clo
+    Page Should Contain  Clouds
+    Sleep  2s
