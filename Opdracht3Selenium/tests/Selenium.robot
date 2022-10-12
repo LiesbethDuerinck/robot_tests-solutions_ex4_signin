@@ -11,6 +11,15 @@ Suite Teardown  Close browser
 
 
 *** Test Cases ***
+
+De zoekbalk vult resultaten aan
+
+    Click Element  xpath://*[@id="mui-43530"]
+    Input Text  //*[@id="mui-43530"]  Clo
+    Page Should Contain  Clouds
+    Sleep  5s
+
+
 Inloggen geeft de juiste feedback (meerdere cases) PASS
 
     Sleep  4s
