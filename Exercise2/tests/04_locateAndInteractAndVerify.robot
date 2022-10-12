@@ -9,6 +9,7 @@ Suite Teardown  Close browser
 *** Test Cases ***
 
 Selenium Test Locate And Interact And Verify
+    Sleep  4s
     Click Element  xpath://*[@id="koekieBar"]/div[1]/div[2]/button[1]
     ${text}=  Get Text  xpath://a[@class='smartphones']
     Should Contain  ${text}  Beste
