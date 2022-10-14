@@ -1,5 +1,5 @@
 *** Settings ***
-Library  SeleniumLibrary
+
 Resource  ../pageObjects/basePage.robot
 
 
@@ -12,28 +12,7 @@ Suite Teardown  Close browser
 
 *** Test Cases ***
 
-De zoekbalk vult resultaten aan
-
-    Click Element  xpath://*[@id="mui-43530"]
-    Input Text  //*[@id="mui-43530"]  Clo
-    Page Should Contain  Clouds
-    Sleep  5s
-
-
-Inloggen geeft de juiste feedback (meerdere cases) PASS
-
-    Sleep  4s
-    Click Element  css:#SignInButton
-    Sleep  2s
-    Input Text  css:#SignInEmail  liesbeth_duerinck@hotmail.com
-    Input Text  css:#SignInPassword  Sterk123
-    Click Element  css:#SignInButtonComplete
-    Sleep  2s
-    Page Should Contain Element  //*[@id="SignOutButton"]
-    Sleep  2s
-
-
-Na het inloggen, kom je op de juiste pagina terecht PASS
+Na het inloggen, kom je op de juiste pagina terecht
 
     Sleep  4s
     Click Element  css:#SignInButton
@@ -71,5 +50,93 @@ Een profiel heeft een avatar
     Sleep  2s
     Click Element  xpath://*[@id="nav"]/div[4]/a[2]
     Element Should Be Visible  xpath://*[@id="SignIn"]/div[3]/img
+
+
+Foutief inloggen geef een feedback voor foute paswoord
+
+    Sleep  6s
+    Click Element  css:#SignInButton
+    Sleep  2s
+    Input Text  css:#SignInEmail  liesbeth_duerinck@hotmail.com
+    Input Text  css:#SignInPassword  FoutWW
+    Click Element  css:#SignInButtonComplete
+    Sleep  2s
+    Element Should Not Be Visible  css:#SignOutButton
+
+Foutief inloggen geef een feedback voor foute username
+
+    Sleep  6s
+    Click Element  css:#SignInButton
+    Sleep  2s
+    Input Text  css:#SignInEmail  liesbeth.duerinck
+    Input Text  css:#SignInPassword  Sterk123
+    Click Element  css:#SignInButtonComplete
+    Sleep  2s
+    Element Should Not Be Visible  css:#SignOutButton
+
+Na het huren van een film, dalen de credits met de juiste waarde
+
+    Sleep  5s
+    Click Element  css:#SignInButton
+    Input Text  css:#SignInEmail  liesbeth_duerinck@hotmail.com
+    Input Text  css:#SignInPassword  Sterk123
+    Click Element  css:#SignInButtonComplete
+    Sleep  2s
+    Click Image  xpath://*[@id="734280"]
+    Sleep  2s
+    Click Element  css:#RentMovieButton
+    Sleep  10s
+    Go To  https://brightshopapp.herokuapp.com/#/profile
+    Sleep  2s
+    Element Should Contain  xpath://*[@id="SignIn"]/div[3]/p[6]     87
+
+
+Na het huren van een film, komt het in de lijst met gehuurde films
+
+    Sleep  5s
+    Click Element  css:#SignInButton
+    Input Text  css:#SignInEmail  liesbeth_duerinck@hotmail.com
+    Input Text  css:#SignInPassword  Sterk123
+    Click Element  css:#SignInButtonComplete
+    Sleep  2s
+    Click Image  xpath://*[@id="512895"]
+    Sleep  2s
+    Click Element  css:#RentMovieButton
+    Sleep  5s
+    Go To  https://brightshopapp.herokuapp.com/#/orders
+    Should Contain  //*[@id="root"]/div/div[2]/div[3]/div/div/div[3]/p[1]  LADY AND THE TRAMP
+    Sleep  2s
+
+
+Negatieve credits kunnen niet aangekocht worden
+
+    Sleep  5s
+    Click Element  css:#SignInButton
+    Input Text  css:#SignInEmail  liesbeth_duerinck@hotmail.com
+    Input Text  css:#SignInPassword  Sterk123
+    Click Element  css:#SignInButtonComplete
+    Sleep  2s
+    Go To  https://brightshopapp.herokuapp.com/#/profile
+    Click Element  xpath://*[@id="SignIn"]/div[3]/button//*[@id="SignIn"]/div[3]/button
+    Click Element  xpath://*[@id="SignIn"]/div[3]/div[2]/div/form/input
+    Input Text  xpath://*[@id="SignIn"]/div[3]/div[2]/div/form/input  -10
+    Sleep  2s
+    Element Should Contain  xpath://*[@id="SignIn"]/div[3]/p[6]     87
+
+
+De zoekbalk helpt om een film op te zoeken
+
+    Sleep  5s
+    Click Element  xpath://*[@id="mui-67075"]
+    Input Text  xpath://*[@id="mui-67075"]  Clo
+
+
+De zoekbalk vult resultaten aan
+
+
+
+
+
+
 
 
