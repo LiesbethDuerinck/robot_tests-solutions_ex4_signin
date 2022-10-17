@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.7 on win32)" generated="20221005 20:03:31.802" rpa="false" schemaversion="3">
+<suite id="s1" name="01 signinTest" source="C:\Users\liesb\Testing\robot_tests-solutions_ex4_signin\robot_tests-solutions_ex4_signin\Exercise4\tests\01_signinTest.robot">
+<kw name="Open My Website" library="basePage" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221005 20:03:31.958" level="INFO">Opening browser 'Google Chrome' to base url 'http://practice.automationtesting.in'.</msg>
+<status status="PASS" starttime="20221005 20:03:31.958" endtime="20221005 20:03:41.935"/>
+</kw>
+<status status="PASS" starttime="20221005 20:03:31.958" endtime="20221005 20:03:41.935"/>
+</kw>
+<test id="s1-t1" name="Login Without Email Address" line="8">
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221005 20:03:43.949" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221005 20:03:41.937" endtime="20221005 20:03:43.949"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css:#menu-icon</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221005 20:03:43.949" level="INFO">Clicking element 'css:#menu-icon'.</msg>
+<status status="PASS" starttime="20221005 20:03:43.949" endtime="20221005 20:03:43.999"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221005 20:03:46.005" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221005 20:03:44.000" endtime="20221005 20:03:46.005"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css:a[href='https://practice.automationtesting.in/my-account/']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221005 20:03:46.008" level="INFO">Clicking element 'css:a[href='https://practice.automationtesting.in/my-account/']'.</msg>
+<status status="PASS" starttime="20221005 20:03:46.008" endtime="20221005 20:03:46.048"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>10s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221005 20:03:56.063" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20221005 20:03:46.051" endtime="20221005 20:03:56.063"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:#password</arg>
+<arg>dlsl</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221005 20:03:56.064" level="INFO">Typing text 'dlsl' into text field 'css:#password'.</msg>
+<status status="PASS" starttime="20221005 20:03:56.063" endtime="20221005 20:03:59.074"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221005 20:04:00.087" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20221005 20:03:59.075" endtime="20221005 20:04:00.087"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>css:input[value='Login']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221005 20:04:00.088" level="INFO">Clicking button 'css:input[value='Login']'.</msg>
+<status status="PASS" starttime="20221005 20:04:00.088" endtime="20221005 20:04:02.274"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221005 20:04:03.285" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20221005 20:04:02.274" endtime="20221005 20:04:03.285"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>ul[class='woocommerce-error'] li</arg>
+<arg>Error: Username is required</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20221005 20:04:03.285" level="INFO">Verifying element 'ul[class='woocommerce-error'] li' contains exact text 'Error: Username is required'.</msg>
+<msg timestamp="20221005 20:04:03.408" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20221005 20:04:03.408" level="FAIL">Element with locator 'ul[class='woocommerce-error'] li' not found.</msg>
+<status status="FAIL" starttime="20221005 20:04:03.285" endtime="20221005 20:04:03.409"/>
+</kw>
+<status status="FAIL" starttime="20221005 20:03:41.935" endtime="20221005 20:04:03.410">Element with locator 'ul[class='woocommerce-error'] li' not found.</status>
+</test>
+<status status="FAIL" starttime="20221005 20:03:31.802" endtime="20221005 20:04:03.411"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="01 signinTest">01 signinTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
