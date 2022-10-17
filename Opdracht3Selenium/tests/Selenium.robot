@@ -37,7 +37,8 @@ Een profiel toont de correcte voor- en achternaam
     Sleep  2s
     ${firstname}=  Get Text  xpath://p[2]
     Should Be Equal  ${firstname}  Liesbeth
-    Sleep  5s
+    Element text Should Be  //div[@class='css-kcntxh']/p[@class='css-cpr2ex'][1]  Duerinck
+
 
 Een profiel heeft een avatar
 
@@ -61,7 +62,7 @@ Foutief inloggen geef een feedback voor foute paswoord
     Input Text  css:#SignInPassword  FoutWW
     Click Element  css:#SignInButtonComplete
     Sleep  2s
-    Element Should Not Be Visible  css:#SignOutButton
+    Element Text Should Be  //div[@class='css-1y9e552']/code  Email or password incorrect.
 
 Foutief inloggen geef een feedback voor foute username
 
@@ -72,7 +73,8 @@ Foutief inloggen geef een feedback voor foute username
     Input Text  css:#SignInPassword  Sterk123
     Click Element  css:#SignInButtonComplete
     Sleep  2s
-    Element Should Not Be Visible  css:#SignOutButton
+    Element Text Should Be  //div[@class='css-1y9e552']/code  Please fill in a correct email-adress.
+
 
 Na het huren van een film, dalen de credits met de juiste waarde
 
@@ -99,14 +101,13 @@ Na het huren van een film, komt het in de lijst met gehuurde films
     Input Text  css:#SignInPassword  Sterk123
     Click Element  css:#SignInButtonComplete
     Sleep  2s
-    Click Image  xpath://*[@id="512895"]
-    Sleep  2s
-    Click Element  css:#RentMovieButton
+    Click Element    xpath://div[@id='Action Movies']//img[@id='722603']
+    Sleep  5s
+    Click Element    xpath://button[@id='RentMovieButton']
     Sleep  5s
     Go To  https://brightshopapp.herokuapp.com/#/orders
-    Should Contain  //*[@id="root"]/div/div[2]/div[3]/div/div/div[3]/p[1]  LADY AND THE TRAMP
-    Sleep  2s
-
+    Sleep  5s
+    Element Should Contain    xpath://*[@id="root"]/div/div[2]/div[3]/div  BATTLEFIELD
 
 Negatieve credits kunnen niet aangekocht worden
 
@@ -117,12 +118,13 @@ Negatieve credits kunnen niet aangekocht worden
     Click Element  css:#SignInButtonComplete
     Sleep  2s
     Go To  https://brightshopapp.herokuapp.com/#/profile
-    Click Element  xpath://*[@id="SignIn"]/div[3]/button//*[@id="SignIn"]/div[3]/button
+    Click Element  xpath://*[@id="SignIn"]/div[3]/button
+    Sleep  2s
     Click Element  xpath://*[@id="SignIn"]/div[3]/div[2]/div/form/input
     Input Text  xpath://*[@id="SignIn"]/div[3]/div[2]/div/form/input  -10
     Sleep  2s
-    Element Should Contain  xpath://*[@id="SignIn"]/div[3]/p[6]     87
-
+    Click Element  xpath://*[@id="SignIn"]/div[3]/div[2]/div/form/button
+    Element Should Contain  xpath://*[@id="SignIn"]/div[3]/p[6]     75
 
 De zoekbalk helpt om een film op te zoeken
 
@@ -132,6 +134,22 @@ De zoekbalk helpt om een film op te zoeken
 
 
 De zoekbalk vult resultaten aan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
