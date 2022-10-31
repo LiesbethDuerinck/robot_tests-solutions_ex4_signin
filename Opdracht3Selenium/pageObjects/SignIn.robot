@@ -1,7 +1,7 @@
 *** Settings ***
 
 Resource            basePage.robot
-Resource            homePage.robot
+
 
 ***Variables***
 

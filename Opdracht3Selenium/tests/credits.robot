@@ -17,36 +17,45 @@ Library  SeleniumLibrary
 ${addCredits}=  xpath://*[@id="SignIn"]/div[3]/button
 ${buyButton}=  xpath://*[@id="SignIn"]/div[3]/div[2]/div/form/button
 ${inputCredits}=  xpath://*[@id="SignIn"]/div[3]/div[2]/div/form/input
-${amountOfCredits}=  xpath://*[@id="SignIn"]/div[3]/p[6]
-${movieOfChoice}=  xpath://*[@id="734280"]
+${movieOfChoice}=  xpath://*[@id="531219"]
 ${RentThisMovieButton}=  css:#RentMovieButton
+${creditAmount}=  xpath://*[@id="SignIn"]/div[3]/p[6]
 
 
 *** Test Cases ***
 
-Negatieve credits kunnen niet aangekocht worden
-
-    Login With Account
-    Go To  https://brightshopapp.herokuapp.com/#/profile
-    Click Element  ${addCredits}
-    Sleep  2s
-    Click Element  ${inputCredits}
-    Input Text  ${inputCredits}  -10
-    Sleep  2s
-    Click Element  ${buyButton}
-    Element Should Contain   ${amountOfCredits}    75
 
 
 Na het huren van een film, dalen de credits met de juiste waarde
 
     Login With Account
+    Go To  https://brightshopapp.herokuapp.com/#/profile
+    ${creditsBeforeBuy}  Get Value  ${creditAmount}
+    Go To  https://brightshopapp.herokuapp.com/#/
+    Sleep  2s
     Click Image  ${movieOfChoice}
     Sleep  2s
     Click Element  ${RentThisMovieButton}
     Sleep  10s
     Go To  https://brightshopapp.herokuapp.com/#/profile
     Sleep  2s
-    Element Should Contain  ${amountOfCredits}     75
+    ${creditsAfterBuy}  Get Value  ${creditAmount}
+    Should Be Equal  ${creditsBeforeBuy}  ${creditsAfterBuy}
 
+
+Negatieve credits kunnen niet aangekocht worden
+
+    Login With Account
+    Go To  https://brightshopapp.herokuapp.com/#/profile
+    ${creditsBeforeBuy}  Get Value  ${creditAmount}
+    Click Element  ${addCredits}
+    Sleep  2s
+    Click Element  ${inputCredits}
+    Sleep  5s
+    Input Text  ${inputCredits}  -10
+    Sleep  2s
+    Click Element  ${buyButton}
+    ${creditsAfterBuy}  Get Value  ${creditAmount}
+    Should Be Equal  ${creditsBeforeBuy}  ${creditsAfterBuy}
 
 
